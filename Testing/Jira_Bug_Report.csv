@@ -1,0 +1,180 @@
+﻿Summary,Issue key,Issue id,Issue Type,Status,Project key,Project name,Project type,Project lead,Project lead id,Project description,Priority,Resolution,Assignee,Assignee Id,Reporter,Reporter Id,Creator,Creator Id,Created,Updated,Last Viewed,Resolved,Due date,Votes,Description,Environment,Watchers,Watchers Id,Original estimate,Remaining Estimate,Time Spent,Work Ratio,Σ Original Estimate,Σ Remaining Estimate,Σ Time Spent,Security Level,Custom field (Atlassian Project),Custom field (Development),Custom field (Issue color),Custom field (Rank),Sprint,Custom field (Start date),Custom field (Story point estimate),Custom field (Team),Custom field (Vulnerability),Comment,Status Category,Status Category Changed
+Gear Rental - Order Confirmation page displays empty Order ID and incorrect summary details after successful payment.,SCRUM-19,10049,Bug,Done,SCRUM,QA Testing,software,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,High,Done,,,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,24/Jun/26 5:39 PM,24/Jun/26 11:33 PM,24/Jun/26 11:33 PM,24/Jun/26 11:33 PM,,0,"*Preconditions:*
+The user has successfully completed the checkout process, and payment is approved.
+
+*Steps to Reproduce:*
+
+# Add rental items to the cart and proceed to the Checkout page.
+# Enter valid billing and payment information.
+# Click the ""Place Order"" button.
+# Wait for the redirection to the Order Confirmation (""Thank You"") page.
+# Observe the generated Order ID and Order Summary breakdown.
+
+*Expected Result:*
+The system should successfully generate a unique order ID (e.g., #CG-10245) and display an accurate mathematical summary of the items rented, taxes, and total amount paid.
+
+*Actual Result:*
+The order confirmation page loads, but the order ID field is completely blank (""Order ID: ""). Additionally, the item breakdown summary is missing or showing default template values instead of the user's real purchase data.",,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,,,,,,,,,,,0|i0001c:,SCRUM Sprint 0,,,,,"24/Jun/26 11:33 PM;712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218;Verified on the confirmation page. Upon a successful checkout, the system now reliably generates and displays a unique Order ID alongside the accurate order summary breakdown. Closing the ticket.",Done,24/Jun/26 11:33 PM
+Gear Rental - Checkout accepts invalid or expired promo codes and applies unintended discounts.,SCRUM-18,10048,Bug,Done,SCRUM,QA Testing,software,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,High,Done,,,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,24/Jun/26 5:34 PM,24/Jun/26 11:33 PM,24/Jun/26 11:32 PM,24/Jun/26 11:33 PM,,0,"*Preconditions:*
+The user has items in their cart and is on the Checkout page.
+
+*Steps to Reproduce:*
+
+# Navigate to the Checkout page and locate the ""Promo Code"" input field.
+# Type an invalid or fake code (e.g., 'FAKECODE123').
+# Click the ""Apply"" button.
+# Observe the order summary and price breakdown.
+
+*Expected Result:*
+The system must reject the code, keep the price breakdown unchanged (no discount applied), and display a clear validation error message like ""Invalid or expired promo code"".
+
+*Actual Result:*
+The system successfully accepts the fake/expired code, modifies the price breakdown, and applies a discount to the final grand total without any error message.",,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,,,,,,,,,,,0|i0001d:,SCRUM Sprint 0,,,,,"24/Jun/26 11:32 PM;712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218;Verified. The promo code component now correctly communicates with the backend, rejecting fake or expired codes with an 'Invalid promo code' warning and keeping the total unchanged. Closing the ticket.",Done,24/Jun/26 11:33 PM
+Gear Rental - Mathematical calculation mismatch in the Order Summary Grand Total.,SCRUM-17,10047,Bug,Done,SCRUM,QA Testing,software,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,High,Done,,,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,24/Jun/26 5:33 PM,24/Jun/26 11:32 PM,24/Jun/26 11:31 PM,24/Jun/26 11:32 PM,,0,"*Preconditions:*
+The user has items in their cart and has moved to the Checkout view.
+
+*Steps to Reproduce:*
+
+# Add rental items to the cart and navigate to the Checkout page.
+# Locate the ""Order Summary"" section on the side of the screen.
+# Note down the displayed subtotal and taxes/service fees (e.g., subtotal: $40.00, taxes/fees: $4.00).
+# Observe the displayed Grand Total and compare it with the manual calculation ($40.00 + $4.00 = $44.00).
+
+*Expected Result:*
+The maths must balance perfectly ($40.00 + $4.00 = $44.00), and the interface must explicitly display $44.00 as the Grand Total without any rounding or calculation mismatches.
+
+*Actual Result:*
+The breakdown math is incorrect. The displayed grand total does not match the sum of the subtotal and taxes/fees (e.g., displaying an incorrect total like $48.00 or $42.00 instead of $44.00).",,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,,,,,,,,,,,0|i0001f:,SCRUM Sprint 0,,,,,"24/Jun/26 11:32 PM;712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218;Re-tested and verified. The mathematical calculation logic has been corrected. The Order Summary Grand Total now accurately reflects the itemized breakdown, taxes, and final costs. Closing the ticket.",Done,24/Jun/26 11:32 PM
+Payment - System allows order placement even when the CVV code field is empty or incomplete.,SCRUM-16,10046,Bug,Done,SCRUM,QA Testing,software,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,Highest,Done,,,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,24/Jun/26 5:30 PM,24/Jun/26 6:30 PM,24/Jun/26 6:29 PM,24/Jun/26 6:30 PM,,0,"*Preconditions:*
+The user is on the Checkout payment section with items ready in their cart.
+
+*Steps to Reproduce:*
+
+# Select ""Credit/Debit Card"" as the payment method.
+# Enter a valid cardholder name and a valid 16-digit card number.
+# Enter a valid future expiry date (e.g., 12/29).
+# Leave the CVV field completely blank (or type only a single digit like '5').
+# Click the ""Place Order"" button.
+
+*Expected Result:*
+The system should reject the form submission, prevent order processing, highlight the CVV input box in red, and display an error message stating, ""CVV code is required"" or ""Invalid CVV format.""
+
+*Actual Result:*
+The system completely ignores the missing CVV validation, bypasses the security check, accepts the submission, and allows the order to be successfully placed.",,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,,,,,,,,,,,0|i0001j:,SCRUM Sprint 0,,,,,"24/Jun/26 6:29 PM;712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218;Verified. The CVV input field is now mandatory, and the payment gateway successfully restricts and blocks any order placements when the CVV field is left blank. Closing the ticket.",Done,24/Jun/26 6:30 PM
+"Gear Rental - Cart quantity field allows alphabetic characters and invalid inputs, causing arithmetic or backend errors.",SCRUM-15,10045,Bug,Done,SCRUM,QA Testing,software,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,High,Done,,,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,24/Jun/26 5:26 PM,24/Jun/26 6:28 PM,24/Jun/26 6:27 PM,24/Jun/26 6:28 PM,,0,"*Preconditions:*
+The user has one item (""4-Person Waterproof Tent"") inside their shopping cart and is viewing the cart page.
+
+*Steps to Reproduce:*
+
+# Navigate to the ""Shopping Cart"" page.
+# Click on the quantity input field next to the item.
+# Clear the field, type 'abc' (or any alphabetic string), and click ""Update Cart"" or press Enter.
+# Alternatively, enter a negative number like '-2' and attempt to update.
+
+*Expected Result:*
+The system should automatically block or reject the invalid inputs (alphabetic characters/negative values), reset the quantity box back to its previous valid number (or 1), and show a clear error message like ""Please enter a valid positive number.""
+
+*Actual Result:*
+The system accepts the invalid alphabetic/negative values in the input field, leading to either an incorrect cart total miscalculation or a backend application crash.",,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,,,,,,,,,,,0|i00033:,SCRUM Sprint 0,,,,,"24/Jun/26 6:27 PM;712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218;Verified. Input validation has been successfully implemented on the cart quantity field. It now strictly accepts positive numerical integers only. Closing the ticket.""",Done,24/Jun/26 6:28 PM
+Registration - System accepts mismatched passwords and successfully creates a new user account.,SCRUM-14,10044,Bug,Done,SCRUM,QA Testing,software,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,High,Done,,,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,24/Jun/26 5:24 PM,24/Jun/26 6:27 PM,24/Jun/26 6:27 PM,24/Jun/26 6:27 PM,,0,"*Preconditions:*
+The user is on the CampGo Registration (Sign Up) page.
+
+*Steps to Reproduce:*
+
+# Enter a valid username and a unique valid email address.
+# Click on the Password field and enter a secure password string (e.g., 'SecurePass123!').
+# Click on the Confirm Password field and enter a completely different password string (e.g., 'DifferentPass456!').
+# Click the ""Register"" button.
+
+*Expected Result:*
+The system should reject the registration attempt, highlight the password fields, prevent the form submission, and display an error message stating: ""Passwords do not match.""
+
+*Actual Result:*
+The system successfully accepts the mismatched fields, creates the user account in the database, and redirects the user without any validation error.",,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,,,,,,,,,,,0|i0002v:,SCRUM Sprint 0,,,,,24/Jun/26 6:27 PM;712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218;Re-tested successfully. The registration form now performs a proper comparison check and blocks submission if the 'Password' and 'Confirm Password' fields do not match. Closing the ticket.,Done,24/Jun/26 6:27 PM
+"Registration - System throws ""500 Internal Server Error"" and fails to create a new user account with valid details.",SCRUM-13,10043,Bug,Done,SCRUM,QA Testing,software,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,High,Done,,,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,24/Jun/26 5:21 PM,24/Jun/26 6:26 PM,24/Jun/26 6:26 PM,24/Jun/26 6:26 PM,,0,"*Preconditions:*
+The user is on the CampGo Registration (Sign Up) page.
+
+*Steps to Reproduce:*
+
+# Click on the Full Name/Username field and enter a unique name (e.g., 'RaviTest').
+# Click on the Email field and enter a unique, valid email address (e.g., 'ravi.newuser@gmail.com').
+# Click on the Password field and enter a secure password (e.g., 'SecurePassword123!').
+# Click on the Confirm Password field and re-enter the exact same password.
+# Click the ""Register"" or ""Sign Up"" button.
+
+*Expected Result:*
+The system should successfully save the new account credentials to the database, display a success message (e.g., ""Account Created Successfully!""), and redirect the user to either the login page or the dashboard.
+
+*Actual Result:*
+The registration fails. The system throws a ""500 Internal Server Error"" page/pop-up, and no new user record is created in the database.",,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,,,,,,,,,,,0|i0002n:,SCRUM Sprint 0,,,,,"24/Jun/26 6:26 PM;712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218;Verified on the current build. The backend handling is fixed, and a new user account can now be created seamlessly with valid details without throwing any server errors. Closing the ticket.",Done,24/Jun/26 6:26 PM
+Authentication - User account is not locked out after 5 failed login attempts (Brute-force vulnerability).,SCRUM-12,10042,Bug,Done,SCRUM,QA Testing,software,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,High,Done,,,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,24/Jun/26 5:19 PM,24/Jun/26 6:25 PM,24/Jun/26 6:24 PM,24/Jun/26 6:25 PM,,0,"*Preconditions:*
+A registered user account exists on the CampGo platform.
+
+*Steps to Reproduce:*
+
+# Navigate to the CampGo login page.
+# Enter the valid registered email address.
+# Enter an incorrect password and click 'Login'.
+# Repeat step 3 for more than 5 consecutive times (e.g., 6 or 7 times).
+# Observe the system behaviour on the 6th and 7th attempts.
+
+*Expected Result:*
+The system should detect multiple failed attempts, temporarily lock the user account (e.g., for 15-30 minutes) to prevent brute-force attacks, and show a warning message ""Account locked due to multiple failed attempts"".
+
+*Actual Result:*
+The system does not lock the account. It allows infinite login attempts without any restriction, timeout, or Captcha challenge, exposing a major security vulnerability.",,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,,,,,,,,,,,0|i0002f:,SCRUM Sprint 0,,,,,"24/Jun/26 6:25 PM;712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218;Verified. The account lockout policy is now functioning correctly. The user account gets locked as expected after 5 consecutive failed login attempts, mitigating the brute-force risk. Closing the ticket.",Done,24/Jun/26 6:25 PM
+Authentication - System logs the user in even when an incorrect password is typed.,SCRUM-11,10041,Bug,Done,SCRUM,QA Testing,software,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,Highest,Done,,,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,24/Jun/26 5:15 PM,24/Jun/26 6:23 PM,24/Jun/26 6:23 PM,24/Jun/26 6:23 PM,,0,"*Preconditions:*
+The user has an already registered account on the CampGo platform.
+
+*Steps to Reproduce:*
+
+# Navigate to the CampGo login page.
+# Enter a valid, registered email address.
+# Enter an incorrect or random password (e.g., 'WrongPassword123').
+# Click the 'Login' button.
+
+*Expected Result:*
+The system should reject the login attempt, display a clear validation error message (e.g., ""Invalid email or password""), and keep the user on the login page.
+
+*Actual Result:*
+The system successfully authenticates the user despite the incorrect password and redirects them straight to the user home dashboard.",,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,,,,,,,,,,,0|i00027:,SCRUM Sprint 0,,,,,"24/Jun/26 6:23 PM;712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218;Re-tested and verified. The system properly validates credentials and rejects login attempts with incorrect passwords, displaying a clear validation failure message. Closing the ticket.",Done,24/Jun/26 6:23 PM
+Booking - Check-out Date allows users to select a date prior to the Check-in Date.,SCRUM-10,10040,Bug,Done,SCRUM,QA Testing,software,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,High,Done,,,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,24/Jun/26 5:13 PM,24/Jun/26 6:23 PM,24/Jun/26 6:22 PM,24/Jun/26 6:23 PM,,0,"*Preconditions:*
+User is on the campsite booking page.
+
+*Steps to Reproduce:*
+
+# Navigate to the Check-in Date calendar picker.
+# Select today's date (e.g., June 25, 2026).
+# Navigate to the Check-out Date calendar picker.
+# Attempt to select a past date or a date before the selected check-in date (e.g., June 23, 2026).
+# Click the ""Book Now"" button.
+
+*Expected Result:*
+The calendar picker should disable/grey out all dates prior to the chosen check-in date, throw a validation error message, and prevent the form submission.
+
+*Actual Result:*
+The system allows the user to select an invalid Check-out date, accepts the submission, and processes a booking with an invalid/negative duration.",,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,,,,,,,,,,,0|i0001z:,SCRUM Sprint 0,,,,,"24/Jun/26 6:22 PM;712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218;Verified during re-testing. The date picker validation is now active, preventing users from selecting a Check-out date that is earlier than the Check-in date. Closing the ticket.",Done,24/Jun/26 6:23 PM
+Booking - System accepts '0' days as a valid booking duration and fails to display an error message.,SCRUM-9,10039,Bug,Done,SCRUM,QA Testing,software,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,High,Done,,,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,24/Jun/26 5:07 PM,24/Jun/26 6:22 PM,24/Jun/26 6:21 PM,24/Jun/26 6:22 PM,,0,"*Preconditions:*
+User is logged in and on the campsite booking page.
+
+*Steps to Reproduce:*
+
+# Navigate to the campsite booking duration field.
+# Enter '0' as the number of days.
+# Click the ""Book Now"" button.
+
+*Expected Result:*
+The system should reject the entry, display a validation error message (e.g., ""Minimum booking duration is 1 day""), and block the redirect to checkout.
+
+*Actual Result:*
+The system accepts '0' as a valid duration, displays no error message, and redirects the user to the checkout page with a total cost of $0.",,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,,,,,,,,,,,0|i0001r:,SCRUM Sprint 0,,,,,24/Jun/26 6:21 PM;712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218;Verified on the latest build. The system now correctly rejects a booking duration of '0' days and displays the appropriate validation error message. Closing the ticket.,Done,24/Jun/26 6:22 PM
+Login page crashes when clicking the Google login button.,SCRUM-7,10006,Task,In Progress,SCRUM,QA Testing,software,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,Highest,,,,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,05/Jun/26 11:20 PM,05/Jun/26 11:21 PM,05/Jun/26 11:40 PM,,,0,"*Steps to Reproduce:*
+
+# Open app,
+# Go to Login
+# Click Google icon
+
+Expected Result: The user should log in successfully.
+
+Actual Result: App closes immediately with an error screen.",,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,,,,,,,,,,,0|i0001b:,,,,,,,To Do,05/Jun/26 11:21 PM
+Task 3,SCRUM-3,10002,Feature,In Review,SCRUM,QA Testing,software,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,,,,,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,05/Jun/26 10:35 PM,05/Jun/26 10:35 PM,,,,0,,,Ravindu Malshan,712020:bb87f58f-7d35-4a64-95e5-7b4b5aec3218,,,,,,,,,,,,0|i0000f:,,,,,,,In Progress,05/Jun/26 10:35 PM
